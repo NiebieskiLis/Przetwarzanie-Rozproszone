@@ -71,9 +71,11 @@ void insert (ListH_t* ListH , void * dane){
     		
     		ListE_t *find ;
     		find =  ListH->lista;
-    		//Przeszukujemy listę
-    		while ( ListH->funkcja(find-> dane , dane )>=0)
-    		    find = find->next;
+    		//Przeszukujemy listę ///// sprawdzić dołączanie na koniec listy
+    		while ( ListH->funkcja(find-> dane , dane )>0)
+    		    {find = find->next;
+		    
+		    } 
     		    
     		    
     		//dołączamy element
@@ -113,13 +115,13 @@ void freeList(ListH_t * listH)
     free(listH);
     
 }
-void readList(ListH_t * listH){
+void readListInt(ListH_t * listH){
     ListE_t *find ;
     		find =  listH->lista;
     		//Przeszukujemy listę
     		while ( find){
 
-                 printf("%c \n",*(int*)find->dane);
+                 printf("%i \n",*(int*)find->dane);
     		    find = find->next;
                
             }
@@ -137,7 +139,7 @@ int main ()
 	*((int*)dane1) = 7; 
    // insert(lista,dane1);
 
-    readList(lista);
+    readListInt(lista);
     freeList(lista);
     
     return 0;
