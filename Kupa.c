@@ -17,8 +17,8 @@ int compare_strings (void *a , void * b)
 /*czy mogę utworzyć taką uniwersalną funkcje*/
 int compare_int (void *a , void * b)
 {
-     if (*a > *b) return 1;
-     else if (*a==*b) return 0;
+     if ((int*)a > (int*)b) return 1;
+     else if ((int*)a==(int*)b) return 0;
      else return -1;
 }
 
@@ -65,7 +65,7 @@ void insert (ListH_t* ListH , void * dane){
 		{
     		//dodajemy element który będzie przeszukiwał listę
     		
-    		ListE_t *find = (ListE_t *)malloc(sizeof(ListE_t));
+    		ListE_t *find ;
     		find =  ListH->lista;
     		//Przeszukujemy listę
     		while ( ListH->funkcja(find-> dane , dane ))
@@ -111,7 +111,7 @@ void freeList(ListH_t * listH)
     
 }
 void readList(ListH_t * listH){
-    ListE_t *find = (ListE_t *)malloc(sizeof(ListE_t));
+    ListE_t *find ;
     		find =  listH->lista;
     		//Przeszukujemy listę
     		while ( find){
