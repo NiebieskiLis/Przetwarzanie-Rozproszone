@@ -17,8 +17,8 @@ int compare_strings (void *a , void * b)
 /*czy mogę utworzyć taką uniwersalną funkcje*/
 int compare_int (void *a , void * b)
 {
-     if ((int*)a > (int*)b) return 1;
-     else if ((int*)a==(int*)b) return 0;
+     if (*(int*)a > *(int*)b) return 1;
+     else if (*(int*)a==*(int*)b) return 0;
      else return -1;
 }
 
@@ -56,8 +56,9 @@ void insert (ListH_t* ListH , void * dane){
 	int data = *(int*)(dane);
 	if (ListH->lista) {
 		// dane które chcemy dodać do listy są większe od tego co jest na jej początku  
-		if(ListH->funkcja(dane, ListH->lista->dane) )
+		if(ListH->funkcja(dane, ListH->lista->dane)>=0 )
 		{
+			
 			ListH->lista->prev = list;
 			list->next = ListH->lista;
 			list->prev =  NULL;
@@ -70,7 +71,7 @@ void insert (ListH_t* ListH , void * dane){
     		ListE_t *find ;
     		find =  ListH->lista;
     		//Przeszukujemy listę
-    		while ( ListH->funkcja(find-> dane , dane ))
+    		while ( ListH->funkcja(find-> dane , dane )>=0)
     		    find = find->next;
     		    
     		    
