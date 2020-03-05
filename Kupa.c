@@ -86,8 +86,7 @@ void insert (ListH_t* ListH , void * dane){
     	    list->next = find;
     	    
     		
-    		//usuwamy dodatkowy element
-    		free(find);
+    		
     	}
 	
 	}
