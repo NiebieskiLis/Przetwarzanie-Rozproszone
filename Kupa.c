@@ -97,8 +97,7 @@ void insert (ListH_t* ListH , void * dane){
         	
 	
 	}
-		printf("%i \n",*(int*)list->dane);
-
+		
 
 }
 //funkcja oczyszczająca całą listę
