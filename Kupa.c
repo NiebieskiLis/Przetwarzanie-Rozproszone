@@ -53,6 +53,7 @@ void insert (ListH_t* ListH , void * dane){
 	ListE_t *list = (ListE_t *)malloc(sizeof(ListE_t));
 	//Gdy Lista nie jest pusta
 	//*(arguments *)
+	list->dane = dane;
 	int data = *(int*)(dane);
 	if (ListH->lista) {
 		// dane które chcemy dodać do listy są większe od tego co jest na jej początku  
@@ -81,7 +82,7 @@ void insert (ListH_t* ListH , void * dane){
     	    find->prev->next = list;
     	    find->prev = list;
     	    list->next = find;
-    	    list->dane = dane;
+    	    
     		
     		//usuwamy dodatkowy element
     		free(find);
@@ -93,7 +94,7 @@ void insert (ListH_t* ListH , void * dane){
         	ListH-> lista = list;
         	list->next = NULL;
         	list->prev = NULL;
-        	list->dane = dane;
+        	
 	
 	}
 		printf("%i \n",*(int*)list->dane);
