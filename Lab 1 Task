@@ -1,0 +1,7 @@
+# Przetwarzanie-Rozproszone
+Napisane listy dwukierunkowej która jest w stanie przyjąć komperator, oraz dowolny typ danych.
+Funkcje, które moją się znaleźć :
+Utworzenie Listy 
+Insert
+funkcje porównujące
+wypisywanie całej listy
