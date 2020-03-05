@@ -17,8 +17,8 @@ int compare_strings (void *a , void * b)
 /*czy mogę utworzyć taką uniwersalną funkcje*/
 int compare_int (void *a , void * b)
 {
-     if (a > b) return 1;
-     else if (a==b) return 0;
+     if (*a > *b) return 1;
+     else if (*a==*b) return 0;
      else return -1;
 }
 
@@ -51,7 +51,6 @@ ListH_t* createList(int (* funkcja)(void*,void*))
 void insert (ListH_t* ListH , void * dane){
 	//Tworzymy nowy element listy
 	ListE_t *list = (ListE_t *)malloc(sizeof(ListE_t));
-	
 	//Gdy Lista nie jest pusta
 	if (ListH->lista) {
 		// dane które chcemy dodać do listy są większe od tego co jest na jej początku  
@@ -94,6 +93,8 @@ void insert (ListH_t* ListH , void * dane){
         	list->dane = dane;
 	
 	}
+		printf("%i",dane);
+
 
 }
 //funkcja oczyszczająca całą listę
@@ -109,16 +110,31 @@ void freeList(ListH_t * listH)
     free(listH);
     
 }
+void readList(ListH_t * listH){
+    ListE_t *find = (ListE_t *)malloc(sizeof(ListE_t));
+    		find =  listH->lista;
+    		//Przeszukujemy listę
+    		while ( find){
+
+                 printf("%s",(char*)find->dane);
+    		    find = find->next;
+               
+            }
+}
 int main ()
 {
-    ListH_t * lista = createList(compare_strings);
+      ListH_t * lista = createList(compare_strings);
     
     //jak do danych dodać wartość np. 5??
     void * dane =  (int *)malloc(sizeof(int));
 	*((int*)dane) = 5; 
 
     insert(lista,dane);
-    
+    void * dane1 =  (int *)malloc(sizeof(int));
+	*((int*)dane1) = 7; 
+    insert(lista,dane1);
+
+    readList(lista);
     freeList(lista);
     
     return 0;
