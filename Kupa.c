@@ -52,6 +52,8 @@ void insert (ListH_t* ListH , void * dane){
 	//Tworzymy nowy element listy
 	ListE_t *list = (ListE_t *)malloc(sizeof(ListE_t));
 	//Gdy Lista nie jest pusta
+	//*(arguments *)
+	int data = *(int*)(dane);
 	if (ListH->lista) {
 		// dane które chcemy dodać do listy są większe od tego co jest na jej początku  
 		if(ListH->funkcja(dane, ListH->lista->dane) )
@@ -93,7 +95,7 @@ void insert (ListH_t* ListH , void * dane){
         	list->dane = dane;
 	
 	}
-		printf("%i",dane);
+		printf("%i \n",*(int*)list->dane);
 
 
 }
@@ -116,7 +118,7 @@ void readList(ListH_t * listH){
     		//Przeszukujemy listę
     		while ( find){
 
-                 printf("%s",(char*)find->dane);
+                 printf("%c \n",*(int*)find->dane);
     		    find = find->next;
                
             }
@@ -132,7 +134,7 @@ int main ()
     insert(lista,dane);
     void * dane1 =  (int *)malloc(sizeof(int));
 	*((int*)dane1) = 7; 
-    insert(lista,dane1);
+   // insert(lista,dane1);
 
     readList(lista);
     freeList(lista);
