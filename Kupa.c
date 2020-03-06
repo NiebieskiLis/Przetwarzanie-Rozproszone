@@ -156,7 +156,7 @@ int readListStr(ListH_t * listH){
     find =  listH->lista;
     //Przeszukujemy listę
     	while ( find !=  NULL){
-            printf("%s ",*(char*)find->dane);
+            printf("%s ",(char*)find->dane);
             find = find->next;
             }
             printf("\n");
@@ -168,7 +168,7 @@ int readPointer(ListH_t * listH){
     //Przeszukujemy listę
     	while ( find !=  NULL){
           //  printf("%p ",*(char*)find->dane);
-            printf("element %d: %p\n",find->dane);
+            printf("element %p \n",find->dane);
 
             find = find->next;
             }
@@ -178,36 +178,37 @@ int readPointer(ListH_t * listH){
 void readList(ListH_t * listH, char type){
    if (type == 'i') readListInt(listH);
    else if (type == 's') readListInt(listH);
-   else {printf("This is not a generic type - so I read adresses");
+   else {printf("This is not a generic type - so I read adresses /n");
 		readPointer (listH);
 	   
 	   }
 }
 int main ()
 {
-    char type = 'i';
-    ListH_t * lista = createList(compare_int , type);
+    char type = 's';
+    ListH_t * lista = createList(compare_strings , type);
     //Dodajemy dane do listy
-    void * dane =  (int *)malloc(sizeof(int));
-	*((int*)dane) = 5; 
+    void * dane =  (char *)malloc(20*sizeof(char));
+	*((char*)dane) = 'kupa'; 
     insert(lista,dane);
-    void * dane1 =  (int *)malloc(sizeof(int));
-	*((int*)dane1) = 3; 
+    void * dane1 =  (char *)malloc(20*sizeof(char));
+	*((char*)dane1) = 'dupa'; 
     insert(lista,dane1);
-    void * dane2 =  (int *)malloc(sizeof(int));
-	*((int*)dane2) = 10; 
-    insert(lista,dane2);
-    void * dane3 =  (int *)malloc(sizeof(int));
-	*((int*)dane3) = 6; 
-    insert(lista,dane3);
-    readList(lista , lista->type);
-    deleteNth(lista , 2);
+    // void * dane2 =  (int *)malloc(sizeof(int));
+	// *((int*)dane2) = 10; 
+    // insert(lista,dane2);
+    // void * dane3 =  (int *)malloc(sizeof(int));
+	// *((int*)dane3) = 6; 
+    // insert(lista,dane3);
+    // 
+	readList(lista , lista->type);
+    deleteNth(lista , 0);
     
 
     readList(lista , lista->type);
     freeList(lista);
-    free(dane3);
-    free(dane2);
+    // free(dane3);
+    // free(dane2);
     free(dane1);
     free(dane);
     return 0;

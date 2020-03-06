@@ -3,46 +3,28 @@
 #include "stdlib.h"
 #include <string.h>
 
-/*Konwencja
-    pierwsza większe od drugiej = 1
-    równe  = 0 
-    druga większa = -1
-
-*/
-int compare_strings (void *a , void * b)
-{
-    return strcmp((char*)a, (char*)b);
-
-}
-/*czy mogę utworzyć taką uniwersalną funkcje*/
-int compare_int (void *a , void * b)
-{
-     if (a > b) return 1;
-     else if (a==b) return 0;
-     else return -1;
-}
 
 typedef struct List{
 
 	struct List * next;
 	struct List * prev;
 	void * dane;
-	
-
 }ListE_t;
 
 typedef struct ListHandler{
-
 	ListE_t * lista;
 	int (* funkcja) (void *a , void * b);
-	
-
+	char type;
 }ListH_t;
-ListH_t* createList(int (* funkcja)(void*,void*));
 
-void freeList(ListH_t * listH);
+int compare_int (void *a , void * b);
+int compare_strings (void *a , void * b);
+int readListInt(ListH_t * listH);
+int readListStr(ListH_t * listH);
+int readPointer(ListH_t * listH);
+ListH_t* createList(int (* funkcja)(void*,void*) , char type);
+ListE_t * deleteNth (ListH_t * listH, int n);
+void readList(ListH_t * listH, char type);
 void insert (ListH_t* ListH , void * dane);
-
-
-
+void freeList(ListH_t * listH);
 
