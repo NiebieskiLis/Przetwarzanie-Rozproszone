@@ -150,16 +150,44 @@ int readListInt(ListH_t * listH){
 
             return 0;
 }
+
+int readListStr(ListH_t * listH){
+    ListE_t *find ;
+    find =  listH->lista;
+    //Przeszukujemy listę
+    	while ( find !=  NULL){
+            printf("%s ",*(char*)find->dane);
+            find = find->next;
+            }
+            printf("\n");
+            return 0;
+}
+int readPointer(ListH_t * listH){
+    ListE_t *find ;
+    find =  listH->lista;
+    //Przeszukujemy listę
+    	while ( find !=  NULL){
+          //  printf("%p ",*(char*)find->dane);
+            printf("element %d: %p\n",find->dane);
+
+            find = find->next;
+            }
+            printf("\n");
+            return 0;
+}
 void readList(ListH_t * listH, char type){
    if (type == 'i') readListInt(listH);
    else if (type == 's') readListInt(listH);
-   else printf("This is not a generic type - write your own readList function !");
+   else {printf("This is not a generic type - so I read adresses");
+		readPointer (listH);
+	   
+	   }
 }
 int main ()
 {
     char type = 'i';
     ListH_t * lista = createList(compare_int , type);
-    
+    //Dodajemy dane do listy
     void * dane =  (int *)malloc(sizeof(int));
 	*((int*)dane) = 5; 
     insert(lista,dane);
