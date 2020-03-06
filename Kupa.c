@@ -123,7 +123,7 @@ ListE_t * deleteNth (ListH_t * listH, int n){
         element->next->prev=pom->prev; 
     }
     //Nie pozawala mi na to tu
-    //free(element);
+    free(element);
 
 
 }
@@ -133,9 +133,7 @@ void freeList(ListH_t * listH)
     ListE_t *pom;
     while(listH->lista!= NULL)
     {
-        pom = listH->lista;
-        free(listH->lista);
-        listH->lista = pom->next;
+        deleteNth(listH,0);
     }
     free(listH);
     
@@ -175,16 +173,8 @@ int main ()
 	*((int*)dane3) = 6; 
     insert(lista,dane3);
     readList(lista , lista->type);
-    deleteNth(lista , 0);
-        readList(lista , lista->type);
-
-    deleteNth(lista , 0);
-        readList(lista , lista->type);
-
-    deleteNth(lista , 0);
-        readList(lista , lista->type);
-
-    deleteNth(lista , 0);
+    deleteNth(lista , 2);
+    
 
     readList(lista , lista->type);
     freeList(lista);
